@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "customentity",
+  "version": "${version}",
+
+  "name": "Custom entity",
+  "description": "Custom Entity",
+  "authors": [
+    "Monull2452"
+  ],
+
+  "contact": {
+    "homepage": "https://github.com/monull",
+    "sources": "https://github.com/monull/custom-entity-fabric"
+  },
+
+  "license": "CC0-1.0",
+
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "io.github.monull.customentity.CustomEntityMod"
+    ]
+  },
+  "mixins": [
+    "customentity.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.17.x",
+    "java": ">=16"
+  },
+  "suggests": {
+    "prison-escape": "*"
+  }
+}
