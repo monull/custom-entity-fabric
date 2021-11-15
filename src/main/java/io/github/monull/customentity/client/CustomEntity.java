@@ -92,6 +92,7 @@ public class CustomEntity {
             this.lastColorR = this.prevColorR + (this.colorR - this.prevColorR) * tick;
             this.lastColorG = this.prevColorG + (this.colorG - this.prevColorG) * tick;
             this.lastColorB = this.prevColorB + (this.colorB - this.prevColorB) * tick;
+            MinecraftClient.getInstance().player.sendMessage(new LiteralText(String.valueOf(lastColorR) + lastColorG + lastColorB), false);
         } else {
             this.lastColorR = this.colorR;
             this.lastColorG = this.colorG;

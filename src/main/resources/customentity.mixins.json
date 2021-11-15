@@ -4,7 +4,7 @@
   "compatibilityLevel": "JAVA_16",
   "client": [
     "RenderManagerMixin",
-    "EntityModelMixin"
+    "CreeperMixin"
   ],
   "injectors": {
     "defaultRequire": 1
