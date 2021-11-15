@@ -18,9 +18,23 @@ public class CustomEntityManager {
         }
     }
 
+    public static void unregister(int id) {
+        if (entities.get(id) != null) {
+            entities.remove(id);
+        }
+    }
+
     public static void scale(int id, float x, float y, float z, int duration) {
         if (entities.get(id) != null) {
             entities.get(id).setScale(x, y, z, duration);
+        } else {
+            MinecraftClient.getInstance().player.sendMessage(new LiteralText("entity is null"), false);
+        }
+    }
+
+    public static void color(int id, int r, int g, int b, int duration) {
+        if (entities.get(id) != null) {
+            entities.get(id).setColor(r, g, b, duration);
         } else {
             MinecraftClient.getInstance().player.sendMessage(new LiteralText("entity is null"), false);
         }

@@ -3,6 +3,8 @@ package io.github.monull.customentity.network;
 import io.github.monull.customentity.client.CustomEntityManager;
 import io.netty.buffer.ByteBuf;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.text.LiteralText;
 import net.minecraft.util.Identifier;
 
 public class NetworkRegistry {
@@ -30,14 +32,17 @@ public class NetworkRegistry {
 
     private static void unregister(ByteBuf buf) {
         int entityId = buf.readInt();
+        CustomEntityManager.unregister(entityId);
     }
 
     private static void color(ByteBuf buf) {
         int entityId = buf.readInt();
-        byte colorR = buf.readByte();
-        byte colorG = buf.readByte();
-        byte colorB = buf.readByte();
+        int colorR = buf.readInt();
+        int colorG = buf.readInt();
+        int colorB = buf.readInt();
         int duration = buf.readInt();
+        MinecraftClient.getInstance().player.sendMessage(new LiteralText(String.valueOf(colorR) + colorG + colorB), false);
+        CustomEntityManager.color(entityId, colorR, colorG, colorB, duration);
     }
 
     private static void scale(ByteBuf buf) {
@@ -58,5 +63,7 @@ public class NetworkRegistry {
         float scaleY = buf.readFloat();
         float scaleZ = buf.readFloat();
         int duration = buf.readInt();
+        CustomEntityManager.color(entityId, colorR, colorG, colorB, duration);
+        CustomEntityManager.scale(entityId, scaleX, scaleY, scaleZ, duration);
     }
 }
